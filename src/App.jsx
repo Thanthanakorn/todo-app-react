@@ -5,13 +5,20 @@ import {TodoList} from "./components/TodoList.jsx";
 import {TodoInput} from "./components/TodoInput.jsx";
 
 function App() {
+    const todos = [
+        {input: 'Hello! Add your first task here!', completed: true},
+        {input: 'Get the groceries', completed: false},
+        {input: 'Learn how to use React', completed: false},
+        {input: 'Say hello to your friends', completed: true},
+    ]
+
     return (
-        <div>
-            <Header/>
-            <Tabs/>
-            <TodoList/>
+        <>
+            <Header todos={todos}/>
+            <Tabs todos={todos}/>
+            <TodoList todos={todos}/>
             <TodoInput/>
-        </div>
+        </>
     )
 }
 
