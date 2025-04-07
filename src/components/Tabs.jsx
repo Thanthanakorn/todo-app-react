@@ -1,4 +1,6 @@
-export function Tabs() {
+export function Tabs(props) {
+    const {todos} = props
+
     const tabs = ['All', 'Open', 'Completed']
     return (
         <nav className={"tab-container"}>
@@ -6,10 +8,15 @@ export function Tabs() {
             iterate over an array and return a new array of
             elements. */}
             {tabs.map((tab, tabIndex) => {
+                const numOfTasks = tab === 'All' ?
+                    todos.length :
+                    tab === 'Open' ?
+                        todos.filter(val => !val.completed).length :
+                        todos.filter(val => val.completed).length
                 return (
                     <button key={tabIndex}
-                    className={"tab-button"}>
-                        <h4>{tab} <span>(0)</span></h4>
+                            className={"tab-button"}>
+                        <h4>{tab} <span>{numOfTasks}</span></h4>
                     </button>
                 )
             })}

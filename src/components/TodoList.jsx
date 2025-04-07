@@ -1,10 +1,21 @@
 import {TodoCard} from "./TodoCard.jsx";
 
-export function TodoList() {
-    return (
-        <div>
-            <TodoCard/>
+export function TodoList(props) {
+    const {todos} = props
 
-        </div>
+    const tab = 'All'
+
+    return (
+        <>
+            {todos.map((todo, todoIndex) => {
+                return(
+                    <TodoCard key={todoIndex}
+                              todoIndex={todoIndex}
+                              {...props}
+                    />
+                )
+            })}
+
+        </>
     )
 }
